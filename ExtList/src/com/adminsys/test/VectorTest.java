@@ -1,5 +1,6 @@
 package com.adminsys.test;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Vector;
 public class VectorTest {
     public static void main(String[] args) {
         Vector<String> vector = new Vector<>();
+        new ArrayList<>();
         /**
          *  Vector 与ArrayList 集合区别
          *  相同点：

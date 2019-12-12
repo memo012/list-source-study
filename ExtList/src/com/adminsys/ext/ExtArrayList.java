@@ -80,6 +80,7 @@ public class ExtArrayList<E> implements ExtList<E> {
 
     // modCount++ ; 增删改查的时候 modCount++
     private void ensureExplicitCapacity(int minCapacity) {
+//        modCount++ ;
         // 相当于判断我们数组中是否需要继续扩容
         if (minCapacity - elementData.length > 0) {
             // 对我们的数组实现扩容
