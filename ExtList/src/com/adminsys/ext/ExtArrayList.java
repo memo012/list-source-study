@@ -120,4 +120,41 @@ public class ExtArrayList<E> implements ExtList<E> {
                 MAX_ARRAY_SIZE;
     }
 
+    public E remove(int index){
+        // 检查我们的下标是否越界
+        rangeCheck(index);
+        // 获取要删除对象
+        E oldValue = elementData(index);
+        // 计算移动位置
+        int numMoved = size - index - 1;
+        // 判断如果删除数据的时候，不是最后一个的情况下，将删除后面的数据都往前移一位
+        if (numMoved > 0){
+            /*
+             *  第一个参数： 源数组
+             *  第二个参数： 源数组要复制的起始位置
+             *  第三个参数： 目的数组
+             *  第四个参数： 目的数组存放的起始位置
+             *  第五个参数： 复制的长度
+             */
+            System.arraycopy(elementData, index+1, elementData, index,
+                    numMoved);
+        }
+        // 如果numMoved为0的情况下，说明后面不需要往前移动，直接将最后一条数据赋值为null
+        elementData[--size] = null;
+        return oldValue;
+    }
+
+    E elementData(int index) {
+        return (E) elementData[index];
+    }
+
+    private void rangeCheck(int index) {
+        if (index >= size)
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+    }
+
+    private String outOfBoundsMsg(int index) {
+        return "Index: "+index+", Size: "+size;
+    }
+
 }
