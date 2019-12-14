@@ -36,7 +36,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ac-blog" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -86,7 +89,10 @@
       <option name="presentableId" value="Default" />
       <updated>1576184032841</updated>
       <workItem from="1576184036730" duration="6425000" />
-      <workItem from="1576195203320" duration="4812000" />
+      <workItem from="1576195203320" duration="5857000" />
+      <workItem from="1576208682250" duration="504000" />
+      <workItem from="1576293418040" duration="2284000" />
+      <workItem from="1576298450417" duration="5846000" />
     </task>
     <servers />
   </component>
@@ -105,16 +111,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/adminsys/ext/ExtLinkedListHashMap.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
