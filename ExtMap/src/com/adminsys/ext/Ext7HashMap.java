@@ -29,6 +29,12 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
 
     static final Node<?,?>[] EMPTY_TABLE = {};
 
+
+    /**
+     *  集合大小
+     */
+    transient int size;
+
     /**
      *  hashMap底层数组为空
      */
@@ -45,7 +51,7 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -54,6 +60,8 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
         if (table == EMPTY_TABLE) {
             inflateTable(threshold);
         }
+        if (key == null)
+            return putForNullKey(value);
         // 计算hash值
         int hash = hash(key);
         // 根据hash值计算  数组下标存放的位置
@@ -69,7 +77,95 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
                 return oldValue;
             }
         }
+        addEntry(hash, key, value, index);
         return null;
+    }
+
+    private V putForNullKey(V value) {
+        for (Node<K,V> e = table[0]; e != null; e = e.next) {
+            if (e.k == null) {
+                V oldValue = e.v;
+                e.v = value;
+//                e.recordAccess(this);
+                return oldValue;
+            }
+        }
+//        modCount++;
+        addEntry(0, null, value, 0);
+        return null;
+    }
+
+
+    /**
+     * @param hash
+     * @param key
+     * @param value
+     * @param bucketIndex 桶索引下标
+     */
+    void addEntry(int hash, K key, V value, int bucketIndex) {
+        if ((size >= threshold) && (null != table[bucketIndex])) {
+            resize(2 * table.length);
+            hash = (null != key) ? hash(key) : 0;
+            bucketIndex = indexFor(hash, table.length);
+        }
+        createEntry(hash, key, value, bucketIndex);
+    }
+
+    void createEntry(int hash, K key, V value, int bucketIndex) {
+        // 获取原来的 Node对象 如果获取为空的情况下  没有发生hash冲突
+        Node<K,V> next = table[bucketIndex];
+        // 当前最新的Node对象
+        table[bucketIndex] = new Node<>(hash, key, value, next);
+    }
+
+//    public V get(Object key) {
+//        if (key == null)
+//            return getForNullKey();
+//        Entry<K,V> entry = getEntry(key);
+//
+//        return null == entry ? null : entry.getValue();
+//    }
+
+    /**
+     *  扩容
+     * @param newCapacity
+     */
+    void resize(int newCapacity) {
+        Node[] oldTable = table;
+        int oldCapacity = oldTable.length;
+        /**
+         *  最大限度扩容
+         */
+        if (oldCapacity == MAXIMUM_CAPACITY) {
+            threshold = Integer.MAX_VALUE;
+            return;
+        }
+
+        Node[] newTable = new Node[newCapacity];
+        transfer(newTable, initHashSeedAsNeeded(newCapacity));
+//        table = newTable;
+        threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
+    }
+
+    void transfer(Node[] newTable, boolean rehash) {
+        // 新数组长度
+        int newCapacity = newTable.length;
+        for (Node<K,V> e : table) {
+            while(null != e) {
+                Node<K,V> next = e.next;
+                if (rehash) {
+                    e.hash = null == e.k ? 0 : hash(e.k);
+                }
+                int i = indexFor(e.hash, newCapacity);
+                e.next = newTable[i];
+                newTable[i] = e;
+                e = next;
+            }
+        }
+    }
+
+    final boolean initHashSeedAsNeeded(int capacity) {
+        return true;
     }
 
     /**
@@ -80,6 +176,7 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
      */
     static int indexFor(int h, int length) {
         // assert Integer.bitCount(length) == 1 : "length must be a non-zero power of 2";
+        // 减少下标重复
         return h & (length-1);
     }
 
@@ -163,6 +260,43 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
 
     @Override
     public V get(K key) {
+        if (key == null)
+            return getForNullKey();
+        Node<K,V> entry = getEntry(key);
+
+        return null == entry ? null : entry.getValue();
+    }
+
+    final Node<K,V> getEntry(Object key) {
+        /**
+         *  集合大小为空
+         */
+        if (size == 0) {
+            return null;
+        }
+
+        // 计算hash值
+        int hash = (key == null) ? 0 : hash(key);
+        // 遍历取值
+        for (Node<K,V> e = table[indexFor(hash, table.length)];
+             e != null;
+             e = e.next) {
+            Object k;
+            if (e.hash == hash &&
+                    ((k = e.k) == key || (key != null && key.equals(k))))
+                return e;
+        }
+        return null;
+    }
+
+    private V getForNullKey() {
+        if (size == 0) {
+            return null;
+        }
+        for (Node<K,V> e = table[0]; e != null; e = e.next) {
+            if (e.k == null)
+                return e.v;
+        }
         return null;
     }
 
@@ -198,7 +332,7 @@ public class Ext7HashMap<K, V> implements ExtMap<K, V> {
             this.k = k;
             this.v = v;
             this.next = n;
-            hash = h;
+            this.hash = h;
         }
 
         @Override

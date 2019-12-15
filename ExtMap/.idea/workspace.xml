@@ -58,7 +58,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HashMapSevenTest">
+    <configuration name="HashMapSevenTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.adminsys.test.HashMapSevenTest" />
+      <module name="ExtMap" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.adminsys.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HashMapTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.adminsys.test.HashMapTest" />
       <module name="ExtMap" />
@@ -74,6 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HashMapSevenTest" />
         <item itemvalue="Application.HashMapTest" />
       </list>
     </recent_temporary>
@@ -93,6 +107,9 @@
       <workItem from="1576208682250" duration="504000" />
       <workItem from="1576293418040" duration="2284000" />
       <workItem from="1576298450417" duration="5846000" />
+      <workItem from="1576356046160" duration="44000" />
+      <workItem from="1576363249448" duration="806000" />
+      <workItem from="1576364131664" duration="9077000" />
     </task>
     <servers />
   </component>

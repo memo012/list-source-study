@@ -12,9 +12,9 @@ import com.adminsys.ext.ExtLinkedListHashMap;
 public class HashMapTest {
     public static void main(String[] args) {
 //        new HashMap<>()
-//        ExtLinkedListHashMap<Object, String> ex = new ExtLinkedListHashMap<>();
-//        ex.put("a", "dd");
-//        ex.put(97, "aa");
+        ExtLinkedListHashMap<Object, String> ex = new ExtLinkedListHashMap<>();
+        ex.put("a", "dd");
+        ex.put(97, "aa");
 //        System.out.println(ex.get(97));
     }
 }
