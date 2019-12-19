@@ -5,7 +5,6 @@ package com.adminsys.ext;
  * @Description:
  * @Create: 2019-12-13 04-54
  **/
-
 public interface ExtMap<K, V> {
     /**
      *  集合大小

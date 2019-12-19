@@ -1,5 +1,7 @@
 package com.adminsys.test;
 
+import com.adminsys.ext.ExtLinkedList;
+
 import java.util.LinkedList;
 
 /**
@@ -18,7 +20,7 @@ import java.util.LinkedList;
  */
 public class LinkedListTest {
     public static void main(String[] args) {
-        LinkedList<String> linkedList = new LinkedList<>();
+        ExtLinkedList<String> linkedList = new ExtLinkedList<>();
         linkedList.add("-1");
         linkedList.add("-2");
         System.out.println(linkedList.get(1));

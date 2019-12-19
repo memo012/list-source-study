@@ -36,13 +36,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ac-blog" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.adminsys.test" />
       <recent name="com.adminsys.ext" />
     </key>
   </component>
@@ -58,7 +59,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.HashMapSevenTest">
+  <component name="RunManager" selected="Application.BinarySearchTree">
+    <configuration name="BinarySearchTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.adminsys.ext.BinarySearchTree" />
+      <module name="ExtMap" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.adminsys.ext.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HashMapSevenTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.adminsys.test.HashMapSevenTest" />
       <module name="ExtMap" />
@@ -87,6 +101,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BinarySearchTree" />
         <item itemvalue="Application.HashMapSevenTest" />
         <item itemvalue="Application.HashMapTest" />
       </list>
@@ -109,7 +124,12 @@
       <workItem from="1576298450417" duration="5846000" />
       <workItem from="1576356046160" duration="44000" />
       <workItem from="1576363249448" duration="806000" />
-      <workItem from="1576364131664" duration="9077000" />
+      <workItem from="1576364131664" duration="10392000" />
+      <workItem from="1576433632220" duration="3092000" />
+      <workItem from="1576442086112" duration="4576000" />
+      <workItem from="1576539912635" duration="2143000" />
+      <workItem from="1576544546455" duration="2452000" />
+      <workItem from="1576703272561" duration="6893000" />
     </task>
     <servers />
   </component>
@@ -128,5 +148,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/adminsys/test/HashMapTest.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/adminsys/test/HashMapTest.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
